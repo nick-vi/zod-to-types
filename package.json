@@ -1,0 +1,82 @@
+{
+  "name": "zod-to-types",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Generate TypeScript types from Zod schemas",
+  "author": "nick-vi",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nick-vi/zod-to-types.git"
+  },
+  "homepage": "https://github.com/nick-vi/zod-to-types#readme",
+  "bugs": {
+    "url": "https://github.com/nick-vi/zod-to-types/issues"
+  },
+  "main": "dist/index.cjs",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": "./dist/index.js",
+      "default": "./dist/index.cjs"
+    }
+  },
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "zod",
+    "typescript",
+    "generator",
+    "types"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "watch": "tsup --watch --no-dts",
+    "format": "prettier --write .",
+    "lint": "eslint . && tsc --noEmit && prettier --check .",
+    "lint:fix": "eslint . --fix && prettier --write .",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "example": "tsx test/example.ts",
+    "prepublishOnly": "pnpm run lint && pnpm run test && pnpm run build",
+    "release": "npm version patch && git push --follow-tags"
+  },
+  "peerDependencies": {
+    "typescript": "^4.9.4 || ^5.0.2",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.32.0",
+    "@types/node": "^24.2.0",
+    "@typescript-eslint/eslint-plugin": "^8.39.0",
+    "@typescript-eslint/parser": "^8.39.0",
+    "eslint": "^9.32.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.3",
+    "prettier": "^3.6.2",
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.39.0",
+    "vitest": "^3.2.4",
+    "zod": "^4.0.14"
+  },
+  "sideEffects": false,
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "format": [
+      "esm",
+      "cjs"
+    ],
+    "dts": {
+      "resolve": true
+    },
+    "splitting": true,
+    "clean": true
+  },
+  "packageManager": "pnpm@8.15.9"
+}

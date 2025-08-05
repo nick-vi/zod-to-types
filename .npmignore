@@ -1,0 +1,21 @@
+# Source files
+src/
+test/
+
+# Config files
+tsconfig.json
+tsup.config.ts
+eslint.config.js
+.prettierrc.json
+
+# Development files
+.gitignore
+pnpm-lock.yaml
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
